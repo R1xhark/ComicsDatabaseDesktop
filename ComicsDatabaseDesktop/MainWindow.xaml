@@ -1,0 +1,25 @@
+﻿<Window x:Class="ComicsDatabaseDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComicsDatabaseDesktop"
+        mc:Ignorable="d"
+        Title="Richardova Komiksova Databaze" Height="600" Width="800">
+    <Grid Height="590" VerticalAlignment="Top">
+        <TextBlock Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
+        <ListView Margin="26,56,26,105" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Nazev" DisplayMemberBinding="{Binding Nazev }"/>
+                    <GridViewColumn Width="100" Header="Autor" DisplayMemberBinding="{Binding Autor }"/>
+                    <GridViewColumn Width="120" Header="Rok vydani" DisplayMemberBinding="{Binding RokVydani }"/>
+                    <GridViewColumn Width="400" Header="Popis" DisplayMemberBinding="{Binding Popis }"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAdd" Height="Auto" Width="Auto" Click="ButtonAddKomiks_Click" Content="Pridej Komicks" RenderTransformOrigin="0.501,0.502" Margin="518,490,165,75"/>
+        <Button x:Name="btnSearch" Height="Auto" Width="Auto" Click="ButtonSearchKomiks_Click" Content="Hledej Komics" Margin="165,492,515,75"/>
+
+    </Grid>
+</Window>
