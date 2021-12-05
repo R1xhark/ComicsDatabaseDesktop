@@ -7,19 +7,10 @@
         mc:Ignorable="d"
         Title="Richardova Komiksova Databaze" Height="600" Width="800">
     <Grid Height="590" VerticalAlignment="Top">
-        <TextBlock Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
-        <ListView Margin="26,56,26,105" SelectionChanged="ListView_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="100" Header="Nazev" DisplayMemberBinding="{Binding Nazev }"/>
-                    <GridViewColumn Width="100" Header="Autor" DisplayMemberBinding="{Binding Autor }"/>
-                    <GridViewColumn Width="120" Header="Rok vydani" DisplayMemberBinding="{Binding RokVydani }"/>
-                    <GridViewColumn Width="400" Header="Popis" DisplayMemberBinding="{Binding Popis }"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="btnAdd" Height="Auto" Width="Auto" Click="ButtonAddKomiks_Click" Content="Pridej Komicks" RenderTransformOrigin="0.501,0.502" Margin="518,490,165,75"/>
-        <Button x:Name="btnSearch" Height="Auto" Width="Auto" Click="ButtonSearchKomiks_Click" Content="Hledej Komics" Margin="165,492,515,75"/>
+        <TextBlock x:Name="textBlock" Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
+        <DataGrid x:Name="KomiksySeznam" AutoGenerateColumns="True" HorizontalAlignment="Center" Margin="0,63,0,141" Width="719" />
+        <Button x:Name="btnPridej" Height="Auto" Width="Auto" Click="ButtonAddKomiks_Click" Content="Pridej Komicks" RenderTransformOrigin="0.501,0.502" Margin="544,468,139,97"/>
+        <Button x:Name="btnNacti" Height="Auto" Width="Auto" Click="ButtonSearchKomiks_Click" Content="NactiDatabazi" Margin="86,474,594,93"/>
 
     </Grid>
 </Window>

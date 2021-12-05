@@ -27,29 +27,41 @@ namespace ComicsDatabaseDesktop
             InitializeComponent();
         }
 
-
         private void ButtonAddKomiks_Click(object sender, RoutedEventArgs e)
         {
 
-            Window2 okno2 = new Window2();
-            okno2.Show();
+            var pridejKomiks = new Window2();
+            pridejKomiks.Show();
 
         }
         private void ButtonSearchKomiks_Click(object sender, RoutedEventArgs e)
         {
-            Window1 okno1 = new Window1();
-            okno1.Show();
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             string connectionSQL = "server=127.0.0.1;uid=root;" +
-                "pwd=|pryxi!Am4yZxE0N};database=komiksy";
+                   "pwd=|pryxi!Am4yZxE0N};database=komiksy";
             MySqlConnection Connect = new MySqlConnection(connectionSQL);
+           
+            try
+            {
+                Connect.Open();
 
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM komiks (Nazev,Autor,RokVydani,Popis)", Connect);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
+                string sql = "select *from komiksy ";
+                MySqlCommand cmd = new MySqlCommand(sql, Connect);
+                cmd.ExecuteNonQuery();
+
+                var dataAdapter= new MySqlDataAdapter(cmd);
+                var dTableKomiksy = new DataTable();
+                dataAdapter.Fill(dTableKomiksy);
+                KomiksySeznam.ItemsSource = dTableKomiksy.DefaultView;
+                dataAdapter.Update(dTableKomiksy);
+
+                Connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
     }
 }
