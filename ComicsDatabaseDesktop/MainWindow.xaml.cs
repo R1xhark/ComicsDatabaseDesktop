@@ -47,9 +47,30 @@ namespace ComicsDatabaseDesktop
                 "pwd=|pryxi!Am4yZxE0N};database=komiksy";
             MySqlConnection Connect = new MySqlConnection(connectionSQL);
 
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM komiks (Nazev,Autor,RokVydani,Popis)", Connect);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
+            string sql = "Select * from komiksy";
+            MySqlCommand cmd = new MySqlCommand(sql, Connect);
+            MySqlDataReader Reader = cmd.ExecuteReader();
+
+          //  listView1.Items.Clear();
+
+           /* while (Reader.Read())
+            {
+                ListViewItem lv = new ListViewItem(Reader.GetInt32(0).ToString());
+                lv.Items.Add(Reader.GetString(1));
+                lv.SubItems.Add(Reader.GetString(2));
+                listView1.Items.Add(lv);
+
+            }
+            Reader.Close();*/
+
+
+
+
+
+
+
+
+
         }
     }
 }

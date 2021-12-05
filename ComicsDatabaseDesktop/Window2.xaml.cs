@@ -31,20 +31,32 @@ namespace ComicsDatabaseDesktop
             Pripojeni = "server=127.0.0.1;uid=root;" +
                 "pwd=|pryxi!Am4yZxE0N};database=komiksy";
             MySqlConnection ObrazekConn = new MySqlConnection(Pripojeni);
-            string pathObrazekKeKomiksu = @"ObrazekPath.Text";
+            var pathObrazekKeKomiksu =@"ObrazekPath.Text";
             try
             {
-                ObrazekConn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO komiksy(ObrazekPath)Values(" +pathObrazekKeKomiksu+ ")", ObrazekConn);
-                MessageBox.Show("Obrazek byl uspesne pridanDotabaze");
-                ObrazekConn.Close();
-            }
+                Cover.UriSource = new System.Uri(@"ObrazekPath.Text");
+                try
+                {
+                    ObrazekConn.Open();
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO komiksy VALUES(ObrazekPath)(" + pathObrazekKeKomiksu + ")", ObrazekConn);
+                    MessageBox.Show("Obrazek byl uspesne pridanDotabaze");
+                    ObrazekPath.Clear();
+                    ObrazekConn.Close();
+                }
 
-            catch (MySqlException ex)
+                catch (MySqlException ex)
+                {
+
+                    MessageBox.Show("Pripojeni k databazi selhalo\n" + ex.ToString(), "Error : Pripojeni k databazi SQL selhalo", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+            }
+            catch (System.UriFormatException)
             {
-
-                MessageBox.Show("Pripojeni k databazi selhalo\n" + ex.ToString(), "Error : Pripojeni k databazi SQL selhalo", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Spatny format obrazku! Dodrzujte prosim SVG format", "Spatny format", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
+          
         }
         public void ButtonPridejKomics(object sender,RoutedEventArgs e)
         {
@@ -57,9 +69,14 @@ namespace ComicsDatabaseDesktop
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO komiksy(Nazev,Autor,RokVydani,Popis)Values("+Jmeno.Text+Autor.Text+RokVydani.Text+Popis.Text+")",conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO komiksy VALUES(Nazev,Autor,RokVydani,Popis)("+Jmeno.Text+Autor.Text+RokVydani.Text+Popis.Text+")",conn);
                 MessageBox.Show("Komiks byl uspesne pridan do databaze !");
+                    Jmeno.Clear();
+                    Autor.Clear();
+                    RokVydani.Clear();
+                    Popis.Clear();
                 conn.Close();
+
             }
 
             catch (MySqlException ex)

@@ -35,7 +35,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
             <Image.Source>
-                <BitmapImage DecodePixelWidth="15"  UriSource="C:\Users\Richard\Desktop\5gh9t5.jpg" />
+                <BitmapImage x:Name="Cover"  DecodePixelWidth="15"  UriSource="C:\Users\Richard\Desktop\5gh9t5.jpg" />
             </Image.Source>
         </Image>
     </Grid>

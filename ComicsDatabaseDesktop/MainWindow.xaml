@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Richardova Komiksova Databaze" Height="600" Width="800">
     <Grid Height="590" VerticalAlignment="Top">
-        <TextBlock Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
+        <TextBlock x:Name="textBlock" Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
         <ListView Margin="26,56,26,105" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
-                <GridView>
+                <GridView x:Name="komiks">
                     <GridViewColumn Width="100" Header="Nazev" DisplayMemberBinding="{Binding Nazev }"/>
                     <GridViewColumn Width="100" Header="Autor" DisplayMemberBinding="{Binding Autor }"/>
                     <GridViewColumn Width="120" Header="Rok vydani" DisplayMemberBinding="{Binding RokVydani }"/>
