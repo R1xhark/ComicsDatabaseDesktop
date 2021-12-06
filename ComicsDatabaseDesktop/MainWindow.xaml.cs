@@ -38,23 +38,23 @@ namespace ComicsDatabaseDesktop
         {
             string connectionSQL = "server=127.0.0.1;uid=root;" +
                    "pwd=|pryxi!Am4yZxE0N};database=komiksy";
-            MySqlConnection Connect = new MySqlConnection(connectionSQL);
+            MySqlConnection connect = new MySqlConnection(connectionSQL);
            
             try
             {
-                Connect.Open();
+                connect.Open();
 
                 string sql = "select *from komiksy ";
-                MySqlCommand cmd = new MySqlCommand(sql, Connect);
-                cmd.ExecuteNonQuery();
-
-                var dataAdapter= new MySqlDataAdapter(cmd);
+                MySqlCommand sqlCmd = new MySqlCommand(sql, connect);
+                sqlCmd.ExecuteNonQuery();
+                
+                var dataAdapter= new MySqlDataAdapter(sqlCmd);
                 var dTableKomiksy = new DataTable();
                 dataAdapter.Fill(dTableKomiksy);
                 KomiksySeznam.ItemsSource = dTableKomiksy.DefaultView;
                 dataAdapter.Update(dTableKomiksy);
 
-                Connect.Close();
+                connect.Close();
             }
             catch (Exception ex)
             {

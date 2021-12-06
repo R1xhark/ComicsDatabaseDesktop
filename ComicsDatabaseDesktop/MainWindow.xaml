@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:ComicsDatabaseDesktop"
         mc:Ignorable="d"
         Title="Richardova Komiksova Databaze" Height="600" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Richard\Desktop\pozadi.jpg"></ImageBrush>
+    </Window.Background>
     <Grid Height="590" VerticalAlignment="Top">
-        <TextBlock x:Name="textBlock" Margin="26,33,594,532">Seznam Komiksu v Databazi</TextBlock>
+        <TextBlock x:Name="textBlock" Margin="65,38,555,527">Seznam Komiksu v Databazi</TextBlock>
         <DataGrid x:Name="KomiksySeznam" AutoGenerateColumns="True" HorizontalAlignment="Center" Margin="0,63,0,141" Width="719" />
         <Button x:Name="btnPridej" Height="Auto" Width="Auto" Click="ButtonAddKomiks_Click" Content="Pridej Komicks" RenderTransformOrigin="0.501,0.502" Margin="544,468,139,97"/>
         <Button x:Name="btnNacti" Height="Auto" Width="Auto" Click="ButtonSearchKomiks_Click" Content="NactiDatabazi" Margin="86,474,594,93"/>
